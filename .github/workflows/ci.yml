@@ -1,0 +1,22 @@
+name: CI Workflow
+
+on:
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  ci-workflow-job:
+    name: CI Workflow
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Build code
+        run: mvn clean package
+        shell: bash
+
+      - name: Test code
+        run: mvn test
+        shell: bash
